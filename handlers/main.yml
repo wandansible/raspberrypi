@@ -1,0 +1,10 @@
+---
+- name: restart rpi-eeprom-update
+  ansible.builtin.systemd:
+    name: rpi-eeprom-update.service
+    daemon_reload: true
+    state: restarted
+
+- name: rpi-eeprom-config apply
+  ansible.builtin.command:
+    cmd: "rpi-eeprom-config --apply {{ raspberrypi_bootloader_config_file }}"

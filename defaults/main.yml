@@ -1,0 +1,34 @@
+---
+# http://rptl.io/configtxt
+raspberrypi_config: ""
+raspberrypi_config_filename: "/boot/firmware/config.txt"
+
+raspberrypi_update_eeprom: true
+raspberrypi_update_eeprom_time: "daily"
+
+# https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#configuration-properties
+raspberrypi_bootloader_config: ""
+raspberrypi_bootloader_config_file: "/boot/firmware/boot.conf"
+
+raspberrypi_os_issue_file: "/etc/rpi-issue"
+
+raspberrypi_os_remove_sudo_config: true
+raspberrypi_os_sudo_config_files:
+  - 010_at-export
+  - 010_global-tty
+  - 010_pi-nopasswd
+  - 010_proxy
+
+raspberrypi_os_packages_remove:
+  - avahi-daemon
+  - cifs-utils
+  - dnsmasq-base
+  - mkvtoolnix
+  - network-manager
+  - nfs-common
+  - ntfs-3g
+  - ppp
+  - raspberrypi-net-mods
+  - triggerhappy
+  - userconf-pi
+  - v4l-utils

@@ -1,0 +1,16 @@
+---
+- name: Remove sudo config files
+  ansible.builtin.file:
+    path: "/etc/sudoers.d/{{ item }}"
+    state: "absent"
+  loop: "{{ raspberrypi_os_sudo_config_files }}"
+  when: raspberrypi_os_remove_sudo_config | bool
+
+# Purging packages needs to be last as NetworkManager will be removed
+# which might cause the raspberry pi to drop its current DHCP lease
+- name: Purge extra apt packages
+  ansible.builtin.apt:
+    pkg: "{{ raspberrypi_os_packages_remove }}"
+    autoremove: true
+    purge: true
+    state: "absent"

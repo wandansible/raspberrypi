@@ -1,0 +1,15 @@
+---
+- name: Update Raspberry Pi config.txt
+  ansible.builtin.template:
+    src: config.txt
+    dest: "{{ raspberrypi_config_filename }}"
+    owner: root
+    group: root
+    mode: u=rwx,g=rx,o=rx
+  when: raspberrypi_config != ""
+
+- name: Update and configure bootloader EEPROM
+  ansible.builtin.include_tasks:
+    file: eeprom.yml
+  when: >-
+    (dtb_hardware | split(','))[1] is version('4', '>=')

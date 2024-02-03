@@ -1,0 +1,33 @@
+---
+- name: Check for device tree hardware description
+  ansible.builtin.stat:
+    path: "/sys/firmware/devicetree/base/compatible"
+  register: _dtb_compatible_file
+
+- name: Get hardware description
+  when: _dtb_compatible_file.stat.exists
+  block:
+    - name: Get device tree hardware description
+      ansible.builtin.slurp:
+        src: "/sys/firmware/devicetree/base/compatible"
+      register: _dtb_hardware
+
+    - name: Set device tree hardware description fact
+      ansible.builtin.set_fact:
+        dtb_hardware: >-
+          {{ _dtb_hardware["content"] | b64decode }}
+
+    - name: Configure Raspberry Pi system
+      ansible.builtin.include_tasks:
+        file: raspberrypi.yml
+      when: "'raspberrypi' in dtb_hardware"
+
+- name: Check for Raspberry Pi OS
+  ansible.builtin.stat:
+    path: "{{ raspberrypi_os_issue_file }}"
+  register: _rpi_os_issue_file
+
+- name: Configure Raspberry Pi OS
+  ansible.builtin.include_tasks:
+    file: raspberrypi-os.yml
+  when: _rpi_os_issue_file.stat.exists

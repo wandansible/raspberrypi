@@ -1,0 +1,85 @@
+---
+argument_specs:
+  main:
+    short_description: Configure Raspberry Pi devices and Raspberry Pi OS
+    description: |
+      Configures Raspberry Pi system configuration (config.txt) and bootloader configuration.
+      Updates bootloader EEPROM firmware and configures a systemd timer to keep firmware up to date.
+      Configures Raspberry Pi OS to look more like a standard Debian installation.
+    options:
+      raspberrypi_config:
+        description: |
+          Raspberry Pi system configuration file contents,
+          see http://rptl.io/configtxt for more details,
+          or empty string to leave file as is
+        type: str
+        default: ""
+
+      raspberrypi_config_filename:
+        description: Raspberry Pi system configuration filename
+        type: str
+        default: "/boot/firmware/config.txt"
+
+      raspberrypi_update_eeprom:
+        description: If true, update Raspberry Pi bootloader EEPROM to latest version
+        type: bool
+        default: "true"
+
+      raspberrypi_update_eeprom_time:
+        description: |
+          How often to update Raspberry Pi bootloader EEPROM, accepts a systemd time,
+          see https://www.freedesktop.org/software/systemd/man/latest/systemd.time.html,
+          or "never"
+        type: str
+        default: "daily"
+
+      raspberrypi_bootloader_config:
+        description: |
+          Raspberry Pi bootloader configuration,
+          see https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#configuration-properties for more details,
+          or empty string to leave file as is
+        type: str
+        default: ""
+
+      raspberrypi_bootloader_config_file:
+        description: Raspberry Pi bootloader configuration filename
+        type: str
+        default: "/boot/firmware/config.txt"
+
+      raspberrypi_os_issue_file:
+        description: Filename to use for detecting if host is running Raspberry Pi OS
+        type: str
+        default: "/etc/rpi-issue"
+
+      raspberrypi_os_remove_sudo_config:
+        description: If true, remove Raspberry Pi OS sudoers configuration files
+        type: bool
+        default: "true"
+
+      raspberrypi_os_sudo_config_files:
+        description: List of Raspberry Pi OS sudoers configuration files to remove
+        type: list
+        elements: str
+        default:
+          - 010_at-export
+          - 010_global-tty
+          - 010_pi-nopasswd
+          - 010_proxy
+
+      raspberrypi_os_packages_remove:
+        description: List of Raspberry Pi OS apt packages to remove
+        type: list
+        elements: str
+        default:
+          - avahi-daemon
+          - cifs-utils
+          - dnsmasq-base
+          - mkvtoolnix
+          - network-manager
+          - nfs-common
+          - ntfs-3g
+          - ppp
+          - raspberrypi-net-mods
+          - triggerhappy
+          - userconf-pi
+          - v4l-utils

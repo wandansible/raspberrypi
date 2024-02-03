@@ -1,0 +1,62 @@
+---
+- name: Update bootloader EEPROM
+  ansible.builtin.command:
+    cmd: rpi-eeprom-update -s -a
+  register: _rpi_eeprom_update
+  changed_when: >-
+    "reboot to apply the update" in _rpi_eeprom_update.stdout
+  when: raspberrypi_update_eeprom
+
+- name: Set EEPROM bootloader configuration
+  when: raspberrypi_bootloader_config != ""
+  block:
+    - name: Get current EEPROM boot configuration
+      ansible.builtin.command:
+        cmd: "rpi-eeprom-config --out {{ raspberrypi_bootloader_config_file }}"
+        creates: "{{ raspberrypi_bootloader_config_file }}"
+
+    - name: Update EEPROM boot configuration
+      ansible.builtin.template:
+        src: rpi-eeprom-config/boot.conf
+        dest: "{{ raspberrypi_bootloader_config_file }}"
+        owner: root
+        group: root
+        mode: u=rw,g=r,o=r
+      notify: rpi-eeprom-config apply
+
+- name: Enable bootloader EEPROM update systemd timer
+  when:
+    - raspberrypi_update_eeprom
+    - raspberrypi_update_eeprom_time != "never"
+  block:
+    - name: Add rpi-eeprom-update service overrides directory
+      ansible.builtin.file:
+        path: /etc/systemd/system/rpi-eeprom-update.service.d
+        state: directory
+        owner: root
+        group: root
+        mode: u=rwx,g=rx,o=rx
+
+    - name: Add rpi-eeprom-update service overrides
+      ansible.builtin.template:
+        src: rpi-eeprom-update/service-overrides.conf
+        dest: /etc/systemd/system/rpi-eeprom-update.service.d/service-overrides.conf
+        owner: root
+        group: root
+        mode: u=rw,g=r,o=r
+      notify: restart rpi-eeprom-update
+
+    - name: Add bootloader EEPROM update systemd timer
+      ansible.builtin.template:
+        src: rpi-eeprom-update/rpi-eeprom-update.timer
+        dest: /etc/systemd/system/rpi-eeprom-update.timer
+        owner: root
+        group: root
+        mode: u=rw,g=r,o=r
+
+    - name: Start and enable bootloader EEPROM update systemd timer
+      ansible.builtin.systemd:
+        name: rpi-eeprom-update.timer
+        daemon_reload: true
+        state: started
+        enabled: true
