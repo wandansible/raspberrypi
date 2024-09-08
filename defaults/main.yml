@@ -12,6 +12,9 @@ raspberrypi_bootloader_config_file: "/boot/firmware/boot.conf"
 
 raspberrypi_os_issue_file: "/etc/rpi-issue"
 
+raspberrypi_os_raspi_mirror: "http://archive.raspberrypi.com/debian/"
+raspberrypi_os_raspi_mirror_components: "main"
+
 raspberrypi_os_remove_sudo_config: true
 raspberrypi_os_sudo_config_files:
   - 010_at-export

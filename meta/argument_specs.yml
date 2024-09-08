@@ -46,6 +46,16 @@ argument_specs:
         type: str
         default: "/boot/firmware/config.txt"
 
+      raspberrypi_os_raspi_mirror:
+        description: Raspberry Pi OS raspi apt mirror URL
+        type: str
+        default: "http://archive.raspberrypi.com/debian/"
+
+      raspberrypi_os_raspi_mirror_components:
+        description: Raspberry Pi OS raspi apt mirror components
+        type: str
+        default: "main"
+
       raspberrypi_os_issue_file:
         description: Filename to use for detecting if host is running Raspberry Pi OS
         type: str
