@@ -59,6 +59,16 @@ OPTIONS (= is mandatory):
         elements: str
         type: list
 
+- raspberrypi_os_raspi_mirror
+        Raspberry Pi OS raspi apt mirror URL
+        default: http://archive.raspberrypi.com/debian/
+        type: str
+
+- raspberrypi_os_raspi_mirror_components
+        Raspberry Pi OS raspi apt mirror components
+        default: main
+        type: str
+
 - raspberrypi_os_remove_sudo_config
         If true, remove Raspberry Pi OS sudoers configuration files
         default: 'true'

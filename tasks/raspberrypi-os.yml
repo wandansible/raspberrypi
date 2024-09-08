@@ -1,4 +1,18 @@
 ---
+- name: Configure raspi apt mirror
+  ansible.builtin.template:
+    src: "raspi.list"
+    dest: "/etc/apt/sources.list.d/raspi.list"
+    owner: "root"
+    group: "root"
+    mode: "u=rw,g=r,o=r"
+  register: _apt_mirror
+
+- name: Refresh apt cache when mirror changes
+  ansible.builtin.apt:
+    update_cache: true
+  when: _apt_mirror.changed
+
 - name: Remove sudo config files
   ansible.builtin.file:
     path: "/etc/sudoers.d/{{ item }}"
