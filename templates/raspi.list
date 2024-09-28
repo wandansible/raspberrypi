@@ -1,0 +1,4 @@
+# {{ ansible_managed }}
+
+deb {{ raspberrypi_os_raspi_mirror }} {{ ansible_distribution_release }} {{ raspberrypi_os_raspi_mirror_components }}
+deb-src {{ raspberrypi_os_raspi_mirror }} {{ ansible_distribution_release }} {{ raspberrypi_os_raspi_mirror_components }}
