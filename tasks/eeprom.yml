@@ -44,6 +44,7 @@
         owner: root
         group: root
         mode: u=rw,g=r,o=r
+      register: _override_file
       notify: restart rpi-eeprom-update
 
     - name: Add bootloader EEPROM update systemd timer
@@ -53,10 +54,12 @@
         owner: root
         group: root
         mode: u=rw,g=r,o=r
+      register: _timer_file
 
     - name: Start and enable bootloader EEPROM update systemd timer
       ansible.builtin.systemd:
         name: rpi-eeprom-update.timer
-        daemon_reload: true
+        daemon_reload: >-
+          {{ true if _override_file is changed or _timer_file is changed else false }}
         state: started
         enabled: true
