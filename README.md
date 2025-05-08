@@ -52,12 +52,23 @@ Options (= indicates it is required):
           elements: str
           type: list
 
-- raspberrypi_os_raspi_mirror  Raspberry Pi OS raspi apt mirror URL
-          default: http://archive.raspberrypi.com/debian/
+- raspberrypi_os_raspi_mirror_components  Components to use for the Raspberry Pi OS raspi apt mirror
+          default: [main]
+          elements: str
+          type: list
+
+- raspberrypi_os_raspi_mirror_gpg_key  GPG key to use for the Raspberry Pi OS raspi apt mirror
+          default: /usr/share/keyrings/raspberrypi-archive-keyring.gpg
           type: str
 
-- raspberrypi_os_raspi_mirror_components  Raspberry Pi OS raspi apt mirror components
-          default: main
+- raspberrypi_os_raspi_mirror_types  Which types of packages to look for (deb or deb-src) on the
+                                      Raspberry Pi OS raspi apt mirror
+          default: [deb]
+          elements: str
+          type: list
+
+- raspberrypi_os_raspi_mirror_url  Raspberry Pi OS raspi apt mirror URL
+          default: http://archive.raspberrypi.com/debian/
           type: str
 
 - raspberrypi_os_remove_sudo_config  If true, remove Raspberry Pi OS sudoers configuration files
