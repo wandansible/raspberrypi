@@ -1,17 +1,28 @@
 ---
 - name: Configure raspi apt mirror
   ansible.builtin.template:
-    src: "raspi.list"
-    dest: "/etc/apt/sources.list.d/raspi.list"
+    src: "raspi.{{ _apt_sources_type }}"
+    dest: "/etc/apt/sources.list.d/raspi.{{ _apt_sources_type }}"
     owner: "root"
     group: "root"
     mode: "u=rw,g=r,o=r"
+  vars:
+    _apt_sources_type: >-
+      {{
+        "list"
+        if ansible_distribution_major_version | int
+        and (
+          ansible_distribution == "Debian" and ansible_distribution_major_version is version("12", "<=")
+        )
+        else
+        "sources"
+      }}
   register: _apt_mirror
 
 - name: Refresh apt cache when mirror changes
   ansible.builtin.apt:
     update_cache: true
-  when: _apt_mirror.changed
+  when: _apt_mirror is changed
 
 - name: Remove sudo config files
   ansible.builtin.file:

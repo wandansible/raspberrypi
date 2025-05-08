@@ -1,4 +1,5 @@
 # {{ ansible_managed }}
 
-deb {{ raspberrypi_os_raspi_mirror }} {{ ansible_distribution_release }} {{ raspberrypi_os_raspi_mirror_components }}
-deb-src {{ raspberrypi_os_raspi_mirror }} {{ ansible_distribution_release }} {{ raspberrypi_os_raspi_mirror_components }}
+{% for type in raspberrypi_os_raspi_mirror_types %}
+{{ type }} {{ raspberrypi_os_raspi_mirror_url }} {{ ansible_distribution_release }} {{ raspberrypi_os_raspi_mirror_components | join(" ") }}
+{% endfor %}
