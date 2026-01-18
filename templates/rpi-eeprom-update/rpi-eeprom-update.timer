@@ -6,7 +6,9 @@ Description="Check for Raspberry Pi EEPROM updates timer"
 [Timer]
 Unit=rpi-eeprom-update.service
 OnCalendar={{ raspberrypi_update_eeprom_time }}
-RandomizedDelaySec=6h
+{% if raspberrypi_update_eeprom_randomized_delay != "" %}
+RandomizedDelaySec={{ raspberrypi_update_eeprom_randomized_delay }}
+{% endif %}
 Persistent=true
 
 [Install]
