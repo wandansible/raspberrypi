@@ -5,6 +5,7 @@ raspberrypi_config_filename: "/boot/firmware/config.txt"
 
 raspberrypi_update_eeprom: true
 raspberrypi_update_eeprom_time: "daily"
+raspberrypi_update_eeprom_randomized_delay: "6h"
 
 # https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#configuration-properties
 raspberrypi_bootloader_config: ""

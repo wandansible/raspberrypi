@@ -33,6 +33,13 @@ argument_specs:
         type: str
         default: "daily"
 
+      raspberrypi_update_eeprom_randomized_delay:
+        description: |
+          Delay the Raspberry Pi bootloader EEPROM update timer by a random time up
+          to this value or empty string for no delay
+        type: str
+        default: "6h"
+
       raspberrypi_bootloader_config:
         description: |
           Raspberry Pi bootloader configuration,

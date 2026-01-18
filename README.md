@@ -98,6 +98,15 @@ Options (= indicates it is required):
           default: 'true'
           type: bool
 
+- raspberrypi_update_eeprom_randomized_delay  Delay the Raspberry Pi
+                                               bootloader EEPROM
+                                               update timer by a
+                                               random time up to this
+                                               value or empty string
+                                               for no delay
+          default: 6h
+          type: str
+
 - raspberrypi_update_eeprom_time  How often to update Raspberry Pi
                                    bootloader EEPROM, accepts a
                                    systemd time, see
