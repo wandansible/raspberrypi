@@ -26,7 +26,7 @@
 
 - name: Enable bootloader EEPROM update systemd timer
   when:
-    - raspberrypi_update_eeprom
+    - raspberrypi_update_eeprom | bool
     - raspberrypi_update_eeprom_time != "never"
   block:
     - name: Add rpi-eeprom-update service overrides directory
