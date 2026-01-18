@@ -21,70 +21,85 @@ ENTRY POINT: *main* - Configure Raspberry Pi devices and Raspberry Pi OS
 
 Options (= indicates it is required):
 
-- raspberrypi_bootloader_config  Raspberry Pi bootloader configuration, see
+- raspberrypi_bootloader_config  Raspberry Pi bootloader
+                                  configuration, see
                                   https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#configuration-properties
                                   for more details, or empty string to
                                   leave file as is
           default: ''
           type: str
 
-- raspberrypi_bootloader_config_file  Raspberry Pi bootloader configuration filename
+- raspberrypi_bootloader_config_file  Raspberry Pi bootloader
+                                       configuration filename
           default: /boot/firmware/config.txt
           type: str
 
-- raspberrypi_config  Raspberry Pi system configuration file contents, see
-                       http://rptl.io/configtxt for more details, or
-                       empty string to leave file as is
+- raspberrypi_config  Raspberry Pi system configuration file
+                       contents, see http://rptl.io/configtxt for more
+                       details, or empty string to leave file as is
           default: ''
           type: str
 
-- raspberrypi_config_filename  Raspberry Pi system configuration filename
+- raspberrypi_config_filename  Raspberry Pi system configuration
+                                filename
           default: /boot/firmware/config.txt
           type: str
 
-- raspberrypi_os_issue_file  Filename to use for detecting if host is running Raspberry Pi OS
+- raspberrypi_os_issue_file  Filename to use for detecting if host is
+                              running Raspberry Pi OS
           default: /etc/rpi-issue
           type: str
 
-- raspberrypi_os_packages_remove  List of Raspberry Pi OS apt packages to remove
+- raspberrypi_os_packages_remove  List of Raspberry Pi OS apt
+                                   packages to remove
           default: [avahi-daemon, cifs-utils, dnsmasq-base, mkvtoolnix, network-manager, nfs-common,
             ntfs-3g, ppp, raspberrypi-net-mods, triggerhappy, userconf-pi, v4l-utils]
           elements: str
           type: list
 
-- raspberrypi_os_raspi_mirror_components  Components to use for the Raspberry Pi OS raspi apt mirror
+- raspberrypi_os_raspi_mirror_components  Components to use for the
+                                           Raspberry Pi OS raspi apt
+                                           mirror
           default: [main]
           elements: str
           type: list
 
-- raspberrypi_os_raspi_mirror_gpg_key  GPG key to use for the Raspberry Pi OS raspi apt mirror
+- raspberrypi_os_raspi_mirror_gpg_key  GPG key to use for the
+                                        Raspberry Pi OS raspi apt
+                                        mirror
           default: /usr/share/keyrings/raspberrypi-archive-keyring.gpg
           type: str
 
-- raspberrypi_os_raspi_mirror_types  Which types of packages to look for (deb or deb-src) on the
+- raspberrypi_os_raspi_mirror_types  Which types of packages to look
+                                      for (deb or deb-src) on the
                                       Raspberry Pi OS raspi apt mirror
           default: [deb]
           elements: str
           type: list
 
-- raspberrypi_os_raspi_mirror_url  Raspberry Pi OS raspi apt mirror URL
+- raspberrypi_os_raspi_mirror_url  Raspberry Pi OS raspi apt mirror
+                                    URL
           default: http://archive.raspberrypi.com/debian/
           type: str
 
-- raspberrypi_os_remove_sudo_config  If true, remove Raspberry Pi OS sudoers configuration files
+- raspberrypi_os_remove_sudo_config  If true, remove Raspberry Pi OS
+                                      sudoers configuration files
           default: 'true'
           type: bool
 
-- raspberrypi_os_sudo_config_files  List of Raspberry Pi OS sudoers configuration files to remove
+- raspberrypi_os_sudo_config_files  List of Raspberry Pi OS sudoers
+                                     configuration files to remove
           default: [010_at-export, 010_global-tty, 010_pi-nopasswd, 010_proxy]
           elements: str
           type: list
 
-- raspberrypi_update_eeprom  If true, update Raspberry Pi bootloader EEPROM to latest version
+- raspberrypi_update_eeprom  If true, update Raspberry Pi bootloader
+                              EEPROM to latest version
           default: 'true'
           type: bool
 
-- raspberrypi_update_eeprom_time  How often to update Raspberry Pi bootloader EEPROM, accepts a
+- raspberrypi_update_eeprom_time  How often to update Raspberry Pi
+                                   bootloader EEPROM, accepts a
                                    systemd time, see
                                    https://www.freedesktop.org/software/systemd/man/latest/systemd.time.html,
                                    or "never"
