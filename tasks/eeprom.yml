@@ -5,7 +5,7 @@
   register: _rpi_eeprom_update
   changed_when: >-
     "reboot to apply the update" in _rpi_eeprom_update.stdout
-  when: raspberrypi_update_eeprom
+  when: raspberrypi_update_eeprom | bool
 
 - name: Set EEPROM bootloader configuration
   when: raspberrypi_bootloader_config != ""
