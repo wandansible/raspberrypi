@@ -18,7 +18,7 @@ raspberrypi_os_raspi_mirror_types:
   - deb
 raspberrypi_os_raspi_mirror_components:
   - "main"
-raspberrypi_os_raspi_mirror_gpg_key: "/usr/share/keyrings/raspberrypi-archive-keyring.gpg"
+raspberrypi_os_raspi_mirror_gpg_key: "/usr/share/keyrings/raspberrypi-archive-keyring.pgp"
 
 raspberrypi_os_remove_sudo_config: true
 raspberrypi_os_sudo_config_files:

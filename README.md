@@ -67,7 +67,7 @@ Options (= indicates it is required):
 - raspberrypi_os_raspi_mirror_gpg_key  GPG key to use for the
                                         Raspberry Pi OS raspi apt
                                         mirror
-          default: /usr/share/keyrings/raspberrypi-archive-keyring.gpg
+          default: /usr/share/keyrings/raspberrypi-archive-keyring.pgp
           type: str
 
 - raspberrypi_os_raspi_mirror_types  Which types of packages to look
