@@ -77,7 +77,7 @@ argument_specs:
       raspberrypi_os_raspi_mirror_gpg_key:
         description: GPG key to use for the Raspberry Pi OS raspi apt mirror
         type: str
-        default: "/usr/share/keyrings/raspberrypi-archive-keyring.gpg"
+        default: "/usr/share/keyrings/raspberrypi-archive-keyring.pgp"
 
       raspberrypi_os_issue_file:
         description: Filename to use for detecting if host is running Raspberry Pi OS
