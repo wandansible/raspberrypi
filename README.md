@@ -50,6 +50,12 @@ Options (= indicates it is required):
           default: /etc/rpi-issue
           type: str
 
+- raspberrypi_os_journald_storage  Where to store systemd journal
+                                    data, see
+                                    https://www.freedesktop.org/software/systemd/man/latest/journald.conf.html#Storage=
+          default: volatile
+          type: str
+
 - raspberrypi_os_packages_remove  List of Raspberry Pi OS apt
                                    packages to remove
           default: [avahi-daemon, cifs-utils, dnsmasq-base, mkvtoolnix, network-manager, nfs-common,
@@ -84,18 +90,18 @@ Options (= indicates it is required):
 
 - raspberrypi_os_remove_sudo_config  If true, remove Raspberry Pi OS
                                       sudoers configuration files
-          default: 'true'
+          default: true
           type: bool
 
 - raspberrypi_os_sudo_config_files  List of Raspberry Pi OS sudoers
                                      configuration files to remove
-          default: [010_at-export, 010_global-tty, 010_pi-nopasswd, 010_proxy]
+          default: [010_at-export, 010_dpkg-threads, 010_global-tty, 010_pi-nopasswd, 010_proxy]
           elements: str
           type: list
 
 - raspberrypi_update_eeprom  If true, update Raspberry Pi bootloader
                               EEPROM to latest version
-          default: 'true'
+          default: true
           type: bool
 
 - raspberrypi_update_eeprom_randomized_delay  Delay the Raspberry Pi

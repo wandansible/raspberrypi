@@ -23,7 +23,7 @@ argument_specs:
       raspberrypi_update_eeprom:
         description: If true, update Raspberry Pi bootloader EEPROM to latest version
         type: bool
-        default: "true"
+        default: true
 
       raspberrypi_update_eeprom_time:
         description: |
@@ -87,7 +87,7 @@ argument_specs:
       raspberrypi_os_remove_sudo_config:
         description: If true, remove Raspberry Pi OS sudoers configuration files
         type: bool
-        default: "true"
+        default: true
 
       raspberrypi_os_sudo_config_files:
         description: List of Raspberry Pi OS sudoers configuration files to remove
@@ -95,6 +95,7 @@ argument_specs:
         elements: str
         default:
           - 010_at-export
+          - 010_dpkg-threads
           - 010_global-tty
           - 010_pi-nopasswd
           - 010_proxy
@@ -116,3 +117,10 @@ argument_specs:
           - triggerhappy
           - userconf-pi
           - v4l-utils
+
+      raspberrypi_os_journald_storage:
+        description: |
+          Where to store systemd journal data,
+          see https://www.freedesktop.org/software/systemd/man/latest/journald.conf.html#Storage=
+        type: str
+        default: "volatile"
