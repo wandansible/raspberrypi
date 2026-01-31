@@ -23,7 +23,7 @@ argument_specs:
       raspberrypi_update_eeprom:
         description: If true, update Raspberry Pi bootloader EEPROM to latest version
         type: bool
-        default: "true"
+        default: true
 
       raspberrypi_update_eeprom_time:
         description: |
@@ -87,7 +87,7 @@ argument_specs:
       raspberrypi_os_remove_sudo_config:
         description: If true, remove Raspberry Pi OS sudoers configuration files
         type: bool
-        default: "true"
+        default: true
 
       raspberrypi_os_sudo_config_files:
         description: List of Raspberry Pi OS sudoers configuration files to remove

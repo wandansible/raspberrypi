@@ -90,7 +90,7 @@ Options (= indicates it is required):
 
 - raspberrypi_os_remove_sudo_config  If true, remove Raspberry Pi OS
                                       sudoers configuration files
-          default: 'true'
+          default: true
           type: bool
 
 - raspberrypi_os_sudo_config_files  List of Raspberry Pi OS sudoers
@@ -101,7 +101,7 @@ Options (= indicates it is required):
 
 - raspberrypi_update_eeprom  If true, update Raspberry Pi bootloader
                               EEPROM to latest version
-          default: 'true'
+          default: true
           type: bool
 
 - raspberrypi_update_eeprom_randomized_delay  Delay the Raspberry Pi
