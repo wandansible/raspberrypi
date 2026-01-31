@@ -95,6 +95,7 @@ argument_specs:
         elements: str
         default:
           - 010_at-export
+          - 010_dpkg-threads
           - 010_global-tty
           - 010_pi-nopasswd
           - 010_proxy

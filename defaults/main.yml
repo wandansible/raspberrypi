@@ -23,6 +23,7 @@ raspberrypi_os_raspi_mirror_gpg_key: "/usr/share/keyrings/raspberrypi-archive-ke
 raspberrypi_os_remove_sudo_config: true
 raspberrypi_os_sudo_config_files:
   - 010_at-export
+  - 010_dpkg-threads
   - 010_global-tty
   - 010_pi-nopasswd
   - 010_proxy

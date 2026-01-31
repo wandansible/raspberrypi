@@ -95,7 +95,7 @@ Options (= indicates it is required):
 
 - raspberrypi_os_sudo_config_files  List of Raspberry Pi OS sudoers
                                      configuration files to remove
-          default: [010_at-export, 010_global-tty, 010_pi-nopasswd, 010_proxy]
+          default: [010_at-export, 010_dpkg-threads, 010_global-tty, 010_pi-nopasswd, 010_proxy]
           elements: str
           type: list
 
