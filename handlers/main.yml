@@ -8,3 +8,15 @@
 - name: rpi-eeprom-config apply
   ansible.builtin.command:
     cmd: "rpi-eeprom-config --apply {{ raspberrypi_bootloader_config_file }}"
+
+- name: restart journald
+  ansible.builtin.systemd:
+    name: systemd-journald.service
+    daemon_reload: true
+    state: restarted
+  listen: flush journald
+
+- name: journalctl flush
+  ansible.builtin.command:
+    cmd: "journalctl --flush"
+  listen: flush journald

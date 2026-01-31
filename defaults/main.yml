@@ -40,3 +40,5 @@ raspberrypi_os_packages_remove:
   - triggerhappy
   - userconf-pi
   - v4l-utils
+
+raspberrypi_os_journald_storage: volatile

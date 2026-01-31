@@ -116,3 +116,10 @@ argument_specs:
           - triggerhappy
           - userconf-pi
           - v4l-utils
+
+      raspberrypi_os_journald_storage:
+        description: |
+          Where to store systemd journal data,
+          see https://www.freedesktop.org/software/systemd/man/latest/journald.conf.html#Storage=
+        type: str
+        default: "volatile"

@@ -50,6 +50,12 @@ Options (= indicates it is required):
           default: /etc/rpi-issue
           type: str
 
+- raspberrypi_os_journald_storage  Where to store systemd journal
+                                    data, see
+                                    https://www.freedesktop.org/software/systemd/man/latest/journald.conf.html#Storage=
+          default: volatile
+          type: str
+
 - raspberrypi_os_packages_remove  List of Raspberry Pi OS apt
                                    packages to remove
           default: [avahi-daemon, cifs-utils, dnsmasq-base, mkvtoolnix, network-manager, nfs-common,

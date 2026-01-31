@@ -31,6 +31,23 @@
   loop: "{{ raspberrypi_os_sudo_config_files }}"
   when: raspberrypi_os_remove_sudo_config | bool
 
+- name: Create journald drop-in directory
+  ansible.builtin.file:
+    path: "/etc/systemd/journald.conf.d/"
+    owner: "root"
+    group: "root"
+    mode: "u=rwx,g=rx,o=rx"
+    state: "directory"
+
+- name: Configure journald storage
+  ansible.builtin.template:
+    src: "raspi-config-journal-storage.conf"
+    dest: "/etc/systemd/journald.conf.d/80-raspi-config-journal-storage.conf"
+    owner: "root"
+    group: "root"
+    mode: "u=rw,g=r,o=r"
+  notify: flush journald
+
 # Purging packages needs to be last as NetworkManager will be removed
 # which might cause the raspberry pi to drop its current DHCP lease
 - name: Purge extra apt packages
