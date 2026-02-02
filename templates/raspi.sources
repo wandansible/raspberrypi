@@ -2,6 +2,6 @@
 
 Types: {{ raspberrypi_os_raspi_mirror_types | join(" ") }}
 URIs: {{ raspberrypi_os_raspi_mirror_url }}
-Suites: {{ ansible_distribution_release }}
+Suites: {{ ansible_facts.distribution_release }}
 Components: {{ raspberrypi_os_raspi_mirror_components | join(" ") }}
 Signed-By: {{ raspberrypi_os_raspi_mirror_gpg_key }}
