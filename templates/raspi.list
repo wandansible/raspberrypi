@@ -1,5 +1,5 @@
 # {{ ansible_managed }}
 
 {% for type in raspberrypi_os_raspi_mirror_types %}
-{{ type }} {{ raspberrypi_os_raspi_mirror_url }} {{ ansible_distribution_release }} {{ raspberrypi_os_raspi_mirror_components | join(" ") }}
+{{ type }} {{ raspberrypi_os_raspi_mirror_url }} {{ ansible_facts.distribution_release }} {{ raspberrypi_os_raspi_mirror_components | join(" ") }}
 {% endfor %}

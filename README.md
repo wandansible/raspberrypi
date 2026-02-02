@@ -155,7 +155,7 @@ Example Playbook
                BOOT_ORDER=0xf16
 
              raspberrypi_config: |
-               {% if ansible_distribution == "Ubuntu" %}
+               {% if ansible_facts.distribution == "Ubuntu" %}
                kernel=vmlinuz
                cmdline=cmdline.txt
                initramfs initrd.img followkernel
