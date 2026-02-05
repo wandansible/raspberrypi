@@ -15,7 +15,7 @@
     - name: Set device tree hardware description fact
       ansible.builtin.set_fact:
         dtb_hardware: >-
-          {{ _dtb_hardware["content"] | b64decode }}
+          {{ _dtb_hardware.content | b64decode }}
 
     - name: Configure Raspberry Pi system
       ansible.builtin.include_tasks:
