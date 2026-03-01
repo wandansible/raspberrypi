@@ -63,3 +63,22 @@
           {{ true if _override_file is changed or _timer_file is changed else false }}
         state: started
         enabled: true
+
+- name: "Disable bootloader EEPROM update systemd timer"
+  when: raspberrypi_update_eeprom_time == "never"
+  block:
+    - name: Remove bootloader EEPROM update service and timer
+      ansible.builtin.file:
+        path: "/etc/systemd/system/{{ item }}"
+        state: "absent"
+      loop:
+        - "rpi-eeprom-update.service"
+        - "rpi-eeprom-update.timer"
+      register: _remove_files
+
+    - name: Disable bootloader EEPROM update systemd timer
+      ansible.builtin.command:
+        cmd: systemctl disable rpi-eeprom-update.timer
+      register: _systemctl_disable
+      changed_when: "'removed' in _systemctl_disable.stderr | lower"
+      when: _remove_files is changed
