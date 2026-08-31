@@ -1,0 +1,4 @@
+#cloud-config
+# {{ ansible_managed }}
+
+{{ raspberrypi_cloud_init_user_data }}
