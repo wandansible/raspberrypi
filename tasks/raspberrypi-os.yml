@@ -57,3 +57,23 @@
     autoremove: true
     purge: true
     state: "absent"
+
+- name: Configure cloud-init user data
+  ansible.builtin.template:
+    src: cloud-init/user-data
+    dest: "{{ raspberrypi_cloud_init_user_data_file }}"
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  notify: cloud-init apply
+  when: raspberrypi_cloud_init_user_data != ""
+
+- name: Configure cloud-init network config
+  ansible.builtin.template:
+    src: cloud-init/network-config
+    dest: "{{ raspberrypi_cloud_init_network_config_file }}"
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  notify: cloud-init apply
+  when: raspberrypi_cloud_init_network_config != ""

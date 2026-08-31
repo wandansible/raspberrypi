@@ -9,6 +9,10 @@
   ansible.builtin.command:
     cmd: "rpi-eeprom-config --apply {{ raspberrypi_bootloader_config_file }}"
 
+- name: cloud-init apply
+  ansible.builtin.shell:
+    cmd: "script --quiet --return --command 'cloud-init --all-stages' /dev/null"
+
 - name: restart journald
   ansible.builtin.systemd:
     name: systemd-journald.service

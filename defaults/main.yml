@@ -11,6 +11,14 @@ raspberrypi_update_eeprom_randomized_delay: "6h"
 raspberrypi_bootloader_config: ""
 raspberrypi_bootloader_config_file: "/boot/firmware/boot.conf"
 
+# https://docs.cloud-init.io/en/latest/explanation/format/cloud-config.html#user-data-formats-cloud-config
+raspberrypi_cloud_init_user_data: ""
+raspberrypi_cloud_init_user_data_file: "/boot/firmware/user-data"
+
+# https://docs.cloud-init.io/en/latest/reference/network-config-format-v2.html
+raspberrypi_cloud_init_network_config: ""
+raspberrypi_cloud_init_network_config_file: "/boot/firmware/network-config"
+
 raspberrypi_os_issue_file: "/etc/rpi-issue"
 
 raspberrypi_os_raspi_mirror_url: "http://archive.raspberrypi.com/debian/"
