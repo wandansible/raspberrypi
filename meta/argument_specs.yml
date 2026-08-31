@@ -53,6 +53,32 @@ argument_specs:
         type: str
         default: "/boot/firmware/config.txt"
 
+      raspberrypi_cloud_init_user_data:
+        description: |
+          Raspberry Pi cloud-init user-data,
+          see https://docs.cloud-init.io/en/latest/explanation/format/cloud-config.html#user-data-formats-cloud-config
+          for more details, or empty string to leave file as is
+        type: str
+        default: ""
+
+      raspberrypi_cloud_init_user_data_file:
+        description: Raspberry Pi cloud-init user-data filename
+        type: str
+        default: "/boot/firmware/user-data"
+
+      raspberrypi_cloud_init_network_config:
+        description: |
+          Raspberry Pi cloud-init network-config,
+          see https://docs.cloud-init.io/en/latest/reference/network-config-format-v2.html
+          for more details, or empty string to leave file as is
+        type: str
+        default: ""
+
+      raspberrypi_cloud_init_network_config_file:
+        description: Raspberry Pi cloud-init network-config filename
+        type: str
+        default: "/boot/firmware/network-config"
+
       raspberrypi_os_raspi_mirror_url:
         description: Raspberry Pi OS raspi apt mirror URL
         type: str

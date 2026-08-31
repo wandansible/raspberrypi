@@ -34,6 +34,32 @@ Options (= indicates it is required):
           default: /boot/firmware/config.txt
           type: str
 
+- raspberrypi_cloud_init_network_config  Raspberry Pi cloud-init
+                                          network-config, see
+                                          https://docs.cloud-init.io/en/latest/reference/network-config-format-v2.html
+                                          for more details, or empty
+                                          string to leave file as is
+          default: ''
+          type: str
+
+- raspberrypi_cloud_init_network_config_file  Raspberry Pi cloud-init
+                                               network-config filename
+          default: /boot/firmware/network-config
+          type: str
+
+- raspberrypi_cloud_init_user_data  Raspberry Pi cloud-init
+                                     user-data, see
+                                     https://docs.cloud-init.io/en/latest/explanation/format/cloud-config.html#user-data-formats-cloud-config
+                                     for more details, or empty string
+                                     to leave file as is
+          default: ''
+          type: str
+
+- raspberrypi_cloud_init_user_data_file  Raspberry Pi cloud-init
+                                          user-data filename
+          default: /boot/firmware/user-data
+          type: str
+
 - raspberrypi_config  Raspberry Pi system configuration file
                        contents, see http://rptl.io/configtxt for more
                        details, or empty string to leave file as is
