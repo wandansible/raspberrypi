@@ -1,0 +1,3 @@
+# {{ ansible_managed }}
+
+{{ raspberrypi_cloud_init_network_config }}
